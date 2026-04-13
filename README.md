@@ -1,14 +1,14 @@
-# Snip — URL Shortener
+# snip — url shortener
 
 ![Snip UI](static/snip.png)
 
-A minimal URL shortening app built with Flask and MySQL. Shorten long URLs, track click counts, update destinations, and delete links — all from a clean dark-themed interface.
+A minimal URL shortening app built with Flask and MySQL. Shorten long URLs, track click counts, update destinations, and delete links.
 
 ## Stack
 
 | Layer | Technology |
 |---|---|
-| Backend | Flask 3, Flask-SQLAlchemy, Flask-Migrate |
+| Backend | Flask, Flask-SQLAlchemy, Flask-Migrate |
 | Database | MySQL (via PyMySQL) |
 | Frontend | Vanilla HTML + CSS + JS (no build step) |
 
@@ -79,7 +79,7 @@ url-shortener/
 │   ├── models.py       # Url database model
 │   ├── routes.py       # Blueprint with all endpoints
 │   ├── services.py     # CRUD business logic
-│   └── utils.py        # short code generator
+│   └── utils.py
 ├── static/
 │   ├── index.html
 │   ├── style.css
