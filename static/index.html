@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snip — URL Shortener</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="page">
+
+      <!-- ── Header ──────────────────────────────────────────────── -->
+      <header>
+        <span class="logo">snip</span>
+        <p class="tagline">Shorten. Share. Track.</p>
+      </header>
+
+      <!-- ── Shorten form ─────────────────────────────────────────── -->
+      <section class="card" id="section-shorten">
+        <h2>Shorten a URL</h2>
+        <form id="form-shorten">
+          <div class="input-row">
+            <input
+              type="url"
+              id="input-url"
+              placeholder="https://example.com/very/long/url"
+              required
+              autocomplete="off"
+            />
+            <button type="submit">Shorten</button>
+          </div>
+        </form>
+
+        <!-- result shown after successful POST -->
+        <div id="result-shorten" class="result hidden">
+          <p class="label">Your short link</p>
+          <div class="link-row">
+            <a id="result-link" href="#" target="_blank"></a>
+            <button class="btn-icon" id="btn-copy" title="Copy to clipboard">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+            </button>
+          </div>
+          <p class="meta">
+            Code: <strong id="result-code"></strong> &nbsp;·&nbsp;
+            Created: <strong id="result-created"></strong>
+          </p>
+        </div>
+
+        <p id="error-shorten" class="error hidden"></p>
+      </section>
+
+      <!-- ── Manage / Lookup ──────────────────────────────────────── -->
+      <section class="card" id="section-manage">
+        <h2>Manage a short code</h2>
+        <div class="input-row">
+          <input
+            type="text"
+            id="input-code"
+            placeholder="e.g. aB3xYz"
+            maxlength="10"
+            autocomplete="off"
+          />
+          <button id="btn-lookup">Look up</button>
+        </div>
+
+        <!-- record detail panel -->
+        <div id="panel-record" class="record-panel hidden">
+          <div class="record-grid">
+            <span class="rk">Original URL</span>
+            <span class="rv" id="rec-original"></span>
+
+            <span class="rk">Short code</span>
+            <span class="rv" id="rec-code"></span>
+
+            <span class="rk">Clicks</span>
+            <span class="rv" id="rec-clicks"></span>
+
+            <span class="rk">Created</span>
+            <span class="rv" id="rec-created"></span>
+          </div>
+
+          <div class="record-actions">
+            <!-- update -->
+            <div class="update-row hidden" id="update-row">
+              <input
+                type="url"
+                id="input-new-url"
+                placeholder="New destination URL"
+                autocomplete="off"
+              />
+              <button id="btn-update-confirm">Save</button>
+              <button class="btn-secondary" id="btn-update-cancel">Cancel</button>
+            </div>
+            <button id="btn-update-toggle">Edit URL</button>
+            <button class="btn-danger" id="btn-delete">Delete</button>
+            <button class="btn-secondary" id="btn-stats">Stats</button>
+          </div>
+
+          <p id="error-manage" class="error hidden"></p>
+        </div>
+
+        <p id="error-lookup" class="error hidden"></p>
+      </section>
+
+      <!-- ── Stats modal ──────────────────────────────────────────── -->
+      <div id="modal-overlay" class="modal-overlay hidden">
+        <div class="modal">
+          <h3>Stats for <span id="stats-code"></span></h3>
+          <div class="stats-grid">
+            <span class="sk">Original URL</span>
+            <a class="sv" id="stats-original" href="#" target="_blank"></a>
+
+            <span class="sk">Total clicks</span>
+            <span class="sv" id="stats-clicks"></span>
+
+            <span class="sk">Created</span>
+            <span class="sv" id="stats-created"></span>
+          </div>
+          <button id="btn-modal-close">Close</button>
+        </div>
+      </div>
+
+    </div><!-- .page -->
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
